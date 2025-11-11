@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Les petits plats - Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses"
+        />
+        <title>Les petits plats - Recettes de cuisine</title>
+
+        <!-- Bootstrap CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Font Awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        />
+
+        <!-- Custom CSS - Modules -->
+        <link rel="stylesheet" href="assets/css/variables.css" />
+        <link rel="stylesheet" href="assets/css/header.css" />
+        <link rel="stylesheet" href="assets/css/hero.css" />
+        <link rel="stylesheet" href="assets/css/filters.css" />
+        <link rel="stylesheet" href="assets/css/tags.css" />
+        <link rel="stylesheet" href="assets/css/cards.css" />
+        <link rel="stylesheet" href="assets/css/responsive.css" />
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="logo-container">
+                    <img
+                        src="assets/images/logo/logo.png"
+                        alt="Les petits plats"
+                        class="logo"
+                    />
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section with Search -->
+        <section class="hero">
+            <div class="container">
+                <h2 class="hero-title">
+                    CHERCHEZ PARMI PLUS DE 1500 RECETTES<br />DU QUOTIDIEN,
+                    SIMPLES ET DÉLICIEUSES
+                </h2>
+
+                <!-- Main Search Bar -->
+                <div class="search-container">
+                    <input
+                        type="text"
+                        id="mainSearch"
+                        class="form-control search-input"
+                        placeholder="Rechercher une recette, un ingrédient..."
+                        aria-label="Rechercher une recette ou un ingrédient"
+                    />
+                    <button
+                        class="btn search-btn"
+                        type="button"
+                        aria-label="Rechercher"
+                    >
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Filters and Count Section -->
+                <div class="filters-count-wrapper">
+                    <!-- Filters Section -->
+                    <div class="filters-section">
+                        <div class="filters-group">
+                            <!-- Ingredients Filter -->
+                            <div
+                                class="filter-dropdown"
+                                id="ingredientsDropdown"
+                            >
+                                <button
+                                    class="btn btn-filter dropdown-toggle"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Ingrédients
+                                </button>
+                                <div class="dropdown-menu filter-menu">
+                                    <div class="dropdown-search">
+                                        <input
+                                            type="text"
+                                            class="form-control dropdown-search-input"
+                                            placeholder="Rechercher un ingrédient"
+                                            id="ingredientSearch"
+                                            aria-label="Rechercher un ingrédient"
+                                        />
+                                    </div>
+                                    <ul
+                                        class="dropdown-list"
+                                        id="ingredientsList"
+                                    >
+                                        <!-- Ingredients will be populated by JS -->
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Appliances Filter -->
+                            <div
+                                class="filter-dropdown"
+                                id="appliancesDropdown"
+                            >
+                                <button
+                                    class="btn btn-filter dropdown-toggle"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Appareils
+                                </button>
+                                <div class="dropdown-menu filter-menu">
+                                    <div class="dropdown-search">
+                                        <input
+                                            type="text"
+                                            class="form-control dropdown-search-input"
+                                            placeholder="Rechercher un appareil"
+                                            id="applianceSearch"
+                                            aria-label="Rechercher un appareil"
+                                        />
+                                    </div>
+                                    <ul
+                                        class="dropdown-list"
+                                        id="appliancesList"
+                                    >
+                                        <!-- Appliances will be populated by JS -->
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Ustensils Filter -->
+                            <div class="filter-dropdown" id="ustensilsDropdown">
+                                <button
+                                    class="btn btn-filter dropdown-toggle"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Ustensiles
+                                </button>
+                                <div class="dropdown-menu filter-menu">
+                                    <div class="dropdown-search">
+                                        <input
+                                            type="text"
+                                            class="form-control dropdown-search-input"
+                                            placeholder="Rechercher un ustensile"
+                                            id="ustensilSearch"
+                                            aria-label="Rechercher un ustensile"
+                                        />
+                                    </div>
+                                    <ul
+                                        class="dropdown-list"
+                                        id="ustensilsList"
+                                    >
+                                        <!-- Ustensils will be populated by JS -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recipes Count -->
+                    <div class="recipes-count-container">
+                        <h3 class="recipes-count" id="recipesCount">
+                            50 recettes
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- Active Tags Section -->
+                <div class="active-tags-section" id="activeTags">
+                    <!-- Active filter tags will be displayed here -->
+                </div>
+
+                <!-- Recipes Grid -->
+                <div class="recipes-section">
+                    <div class="row g-4" id="recipesGrid">
+                        <!-- Recipe cards will be populated by JS -->
+                    </div>
+                </div>
+
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults" style="display: none">
+                    <p>
+                        Aucune recette ne correspond à votre critère… Vous
+                        pouvez chercher « tarte aux pommes », « poisson », etc.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Recipes Data -->
+        <script src="assets/data/recipes.js"></script>
+
+        <!-- Main Application JS - Modules -->
+        <script type="module" src="assets/js/utils.js"></script>
+        <script type="module" src="assets/js/cardTemplate.js"></script>
+        <script type="module" src="assets/js/filters.js"></script>
+        <script type="module" src="assets/js/tags.js"></script>
+        <script type="module" src="assets/js/search.js"></script>
+        <script type="module" src="assets/js/app.js"></script>
+    </body>
+</html>
