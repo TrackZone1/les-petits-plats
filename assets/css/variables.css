@@ -1,0 +1,24 @@
+/* ========================================
+   VARIABLES ET RESET
+   ======================================== */
+:root {
+    --primary-yellow: #ffd15b;
+    --dark-yellow: #c7a14d;
+    --text-dark: #1b1b1b;
+    --text-gray: #7a7a7a;
+    --white: #ffffff;
+    --light-gray: #ededed;
+    --border-gray: #c6c6c6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    color: var(--text-dark);
+    background-color: var(--light-gray);
+}
