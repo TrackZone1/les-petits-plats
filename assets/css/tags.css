@@ -1,0 +1,36 @@
+/* ========================================
+   ACTIVE TAGS
+   ======================================== */
+.active-tags-section {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--primary-yellow);
+    color: var(--text-dark);
+    padding: 0.625rem 1.125rem;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.tag-close {
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    font-size: 1.125rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: transform 0.2s;
+}
+
+.tag-close:hover {
+    transform: scale(1.2);
+}
