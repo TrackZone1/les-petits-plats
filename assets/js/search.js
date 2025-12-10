@@ -1,72 +1,142 @@
 /**
  * GESTION DE LA RECHERCHE
  * Gère la recherche principale et le filtrage par tags
+ * IMPLÉMENTATION AVEC BOUCLES NATIVES (for, while)
  */
 
 import { normalizeString } from "./utils.js";
 import { activeTags } from "./tags.js";
 
 /**
- * Recherche dans les recettes (fonction de base)
+ * Recherche dans les recettes (implémentation avec boucles natives)
  * @param {Array} recipesArray - Tableau de recettes
  * @param {string} searchTerm - Terme de recherche
  * @returns {Array} Recettes correspondantes
  */
 export function searchRecipes(recipesArray, searchTerm) {
     const normalizedSearch = normalizeString(searchTerm);
+    const results = [];
 
-    return recipesArray.filter((recipe) => {
+    for (let i = 0; i < recipesArray.length; i++) {
+        const recipe = recipesArray[i];
+        let isMatch = false;
+
         // Recherche dans le nom
         if (normalizeString(recipe.name).includes(normalizedSearch)) {
-            return true;
+            isMatch = true;
         }
 
         // Recherche dans la description
-        if (normalizeString(recipe.description).includes(normalizedSearch)) {
-            return true;
+        if (
+            !isMatch &&
+            normalizeString(recipe.description).includes(normalizedSearch)
+        ) {
+            isMatch = true;
         }
 
         // Recherche dans les ingrédients
-        const hasIngredient = recipe.ingredients.some((ing) =>
-            normalizeString(ing.ingredient).includes(normalizedSearch)
-        );
+        if (!isMatch) {
+            for (let j = 0; j < recipe.ingredients.length; j++) {
+                if (
+                    normalizeString(recipe.ingredients[j].ingredient).includes(
+                        normalizedSearch
+                    )
+                ) {
+                    isMatch = true;
+                    break;
+                }
+            }
+        }
 
-        return hasIngredient;
-    });
+        if (isMatch) {
+            results.push(recipe);
+        }
+    }
+
+    return results;
 }
 
 /**
- * Filtre les recettes par tags actifs
+ * Filtre les recettes par tags actifs (implémentation avec boucles natives)
  * @param {Array} recipesArray - Tableau de recettes
  * @returns {Array} Recettes correspondantes
  */
 export function filterByTags(recipesArray) {
-    return recipesArray.filter((recipe) => {
+    const results = [];
+
+    for (let i = 0; i < recipesArray.length; i++) {
+        const recipe = recipesArray[i];
+        let matchesAllTags = true;
+
         // Vérifier les ingrédients
-        const hasAllIngredients = activeTags.ingredients.every((tag) =>
-            recipe.ingredients.some(
-                (ing) =>
-                    normalizeString(ing.ingredient) === normalizeString(tag)
-            )
-        );
+        for (let j = 0; j < activeTags.ingredients.length; j++) {
+            const tag = activeTags.ingredients[j];
+            let hasIngredient = false;
+
+            for (let k = 0; k < recipe.ingredients.length; k++) {
+                if (
+                    normalizeString(recipe.ingredients[k].ingredient) ===
+                    normalizeString(tag)
+                ) {
+                    hasIngredient = true;
+                    break;
+                }
+            }
+
+            if (!hasIngredient) {
+                matchesAllTags = false;
+                break;
+            }
+        }
 
         // Vérifier les appareils
-        const hasAppliance =
-            activeTags.appliances.length === 0 ||
-            activeTags.appliances.some(
-                (tag) =>
-                    normalizeString(recipe.appliance) === normalizeString(tag)
-            );
+        if (matchesAllTags && activeTags.appliances.length > 0) {
+            let hasAppliance = false;
+
+            for (let j = 0; j < activeTags.appliances.length; j++) {
+                if (
+                    normalizeString(recipe.appliance) ===
+                    normalizeString(activeTags.appliances[j])
+                ) {
+                    hasAppliance = true;
+                    break;
+                }
+            }
+
+            if (!hasAppliance) {
+                matchesAllTags = false;
+            }
+        }
 
         // Vérifier les ustensiles
-        const hasAllUstensils = activeTags.ustensils.every((tag) =>
-            recipe.ustensils.some(
-                (ustensil) => normalizeString(ustensil) === normalizeString(tag)
-            )
-        );
+        if (matchesAllTags) {
+            for (let j = 0; j < activeTags.ustensils.length; j++) {
+                const tag = activeTags.ustensils[j];
+                let hasUstensil = false;
 
-        return hasAllIngredients && hasAppliance && hasAllUstensils;
-    });
+                for (let k = 0; k < recipe.ustensils.length; k++) {
+                    if (
+                        normalizeString(recipe.ustensils[k]) ===
+                        normalizeString(tag)
+                    ) {
+                        hasUstensil = true;
+                        break;
+                    }
+                }
+
+                if (!hasUstensil) {
+                    matchesAllTags = false;
+                    break;
+                }
+            }
+        }
+
+        if (matchesAllTags) {
+            results.push(recipe);
+        }
+    }
+
+    return results;
 }
 
 /**
