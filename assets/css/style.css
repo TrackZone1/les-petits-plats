@@ -1,13 +1,4 @@
-/* ========================================
-   FICHIER CSS PRINCIPAL - LEGACY
-   Ce fichier est conservé pour référence.
-   Le projet utilise maintenant des modules CSS séparés.
-   
-   Voir ARCHITECTURE.md pour la nouvelle structure.
-   ======================================== */
-
 /* 
-   Les styles ont été réorganisés en modules :
    - variables.css    → Variables et reset
    - header.css       → Header et logo
    - hero.css         → Section hero et recherche
