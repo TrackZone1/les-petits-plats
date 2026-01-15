@@ -76,11 +76,21 @@ export function displayRecipes(recipesToDisplay) {
     const recipesGrid = document.getElementById("recipesGrid");
     const noResults = document.getElementById("noResults");
     const recipesCount = document.getElementById("recipesCount");
+    const noResultsText = noResults?.querySelector("p");
+    const searchValue = document.getElementById("mainSearch")?.value.trim();
 
     if (recipesToDisplay.length === 0) {
         recipesGrid.innerHTML = "";
         noResults.style.display = "block";
         recipesCount.textContent = "0 recette";
+        if (noResultsText) {
+            if (searchValue && searchValue.length >= 3) {
+                noResultsText.textContent = `Aucune recette ne contient « ${searchValue} » vous pouvez chercher « tarte aux pommes », « poisson », etc.`;
+            } else {
+                noResultsText.textContent =
+                    "Aucune recette ne correspond à votre critère… Vous pouvez chercher « tarte aux pommes », « poisson », etc.";
+            }
+        }
     } else {
         const recipesHTML = recipesToDisplay
             .map((recipe) => createRecipeCard(recipe))

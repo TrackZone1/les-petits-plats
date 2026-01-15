@@ -39,6 +39,7 @@
         <link rel="stylesheet" href="assets/css/responsive.css" />
     </head>
     <body>
+        <!-- Header -->
         <header class="header">
             <div class="container">
                 <div class="logo-container">
@@ -51,6 +52,7 @@
             </div>
         </header>
 
+        <!-- Hero Section with Search -->
         <section class="hero">
             <div class="container">
                 <h2 class="hero-title">
@@ -58,6 +60,7 @@
                     SIMPLES ET DÉLICIEUSES
                 </h2>
 
+                <!-- Main Search Bar -->
                 <div class="search-container">
                     <input
                         type="text"
@@ -77,11 +80,15 @@
             </div>
         </section>
 
+        <!-- Main Content -->
         <main class="main-content">
             <div class="container">
+                <!-- Filters and Count Section -->
                 <div class="filters-count-wrapper">
+                    <!-- Filters Section -->
                     <div class="filters-section">
                         <div class="filters-group">
+                            <!-- Ingredients Filter -->
                             <div
                                 class="filter-dropdown"
                                 id="ingredientsDropdown"
@@ -111,6 +118,7 @@
                                 </div>
                             </div>
 
+                            <!-- Appliances Filter -->
                             <div
                                 class="filter-dropdown"
                                 id="appliancesDropdown"
@@ -140,6 +148,7 @@
                                 </div>
                             </div>
 
+                            <!-- Ustensils Filter -->
                             <div class="filter-dropdown" id="ustensilsDropdown">
                                 <button
                                     class="btn btn-filter dropdown-toggle"
@@ -168,6 +177,7 @@
                         </div>
                     </div>
 
+                    <!-- Recipes Count -->
                     <div class="recipes-count-container">
                         <h3 class="recipes-count" id="recipesCount">
                             50 recettes
@@ -175,13 +185,16 @@
                     </div>
                 </div>
 
+                <!-- Active Tags Section -->
                 <div class="active-tags-section" id="activeTags"></div>
 
+                <!-- Recipes Grid -->
                 <div class="recipes-section">
                     <div class="row g-4" id="recipesGrid"></div>
                 </div>
 
-                <div class="no-results" id="noResults" style="display: none">
+                <!-- No Results Message -->
+                <div class="no-results is-hidden" id="noResults">
                     <p>
                         Aucune recette ne correspond à votre critère… Vous
                         pouvez chercher « tarte aux pommes », « poisson », etc.
